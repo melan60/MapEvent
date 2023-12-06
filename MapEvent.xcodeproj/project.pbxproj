@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B6FF08B2B20D1DD0007C0D1 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6FF08A2B20D1DD0007C0D1 /* MapView.swift */; };
 		8E2500D82B1F47B600777601 /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2500D72B1F47B600777601 /* PlaceModel.swift */; };
 		8E2500DA2B1F47C300777601 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2500D92B1F47C300777601 /* ViewModel.swift */; };
 		8E2500DC2B1F47CC00777601 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2500DB2B1F47CC00777601 /* ApiService.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B6FF08A2B20D1DD0007C0D1 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		8E2500D72B1F47B600777601 /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
 		8E2500D92B1F47C300777601 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		8E2500DB2B1F47CC00777601 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				8E332BCD2B1DCD33001C4BF7 /* BottomSheetView.swift */,
 				8E332BCF2B1DD431001C4BF7 /* ProfilView.swift */,
 				8E332BD12B1DD65B001C4BF7 /* test.swift */,
+				5B6FF08A2B20D1DD0007C0D1 /* MapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				8ED453582B178F64008D13C1 /* ContentView.swift in Sources */,
 				8E2500DC2B1F47CC00777601 /* ApiService.swift in Sources */,
 				8E2500D82B1F47B600777601 /* PlaceModel.swift in Sources */,
+				5B6FF08B2B20D1DD0007C0D1 /* MapView.swift in Sources */,
 				8E40B84A2B20C47E008921C9 /* UserInPlaceModel.swift in Sources */,
 				8ED453562B178F64008D13C1 /* MapEventApp.swift in Sources */,
 				8E332BD02B1DD431001C4BF7 /* ProfilView.swift in Sources */,
