@@ -9,6 +9,8 @@ import SwiftUI
 
 struct BottomSheetView: View {
     let names = ["Holly", "Josh", "Rhonda", "Ted", "Teddy"]
+    let user = User(firstname: "firstname", name: "name", email: "email", company: "company", activity: "activity")
+
     @State private var showingCredits = false
     @State private var searchText = ""
     
@@ -27,7 +29,7 @@ struct BottomSheetView: View {
                             List {
                                 ForEach(searchResults, id: \.self) { name in
                                     NavigationLink {
-                                        ProfilView()
+                                        ProfilView(profile: user)
                                             .presentationDetents([.large])
                                     } label: {
                                         Image(systemName: "person.circle")

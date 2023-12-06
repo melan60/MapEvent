@@ -8,13 +8,64 @@
 import SwiftUI
 
 struct ProfilView: View {
+    var profile : User
+
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Image(systemName: "person.circle")
+                .resizable()
+                .frame(width:150, height: 150)
+                .multilineTextAlignment(.center)
+                
+            
+            HStack(alignment: .center){
+                Text(profile.firstname)
+                    .font(.system(size: 45))
+                    .bold()
+                Text(profile.name)
+                    .font(.system(size: 45))
+                    .bold()
+            }
+            Spacer()
+            
+                HStack(alignment: .center){
+                    Text("Email : ")
+                        .font(.system(size: 25))
+                        .bold()
+                        
+                    Text(profile.email)
+                        .font(.system(size: 25))
+                }
+                .padding(.bottom,20)
+                
+                
+                HStack(alignment: .center){
+                    Text("Company : ")
+                        .font(.system(size: 25))
+                        .bold()
+                    Text(profile.company)
+                        .font(.system(size: 25))
+                }
+                .padding(.bottom,20)
+            
+            HStack(alignment: .center){
+                    Text("Activity : ")
+                        .font(.system(size: 25))
+                        .bold()
+                    Text(profile.activity)
+                        .font(.system(size: 25))
+                }
+            
+            
+            Spacer()
+        }
+        
     }
 }
 
 struct ProfilView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfilView()
+        ProfilView(profile: User(firstname: "firstname", name: "name", email: "email", company: "company", activity: "activity"))
     }
 }
