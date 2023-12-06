@@ -30,7 +30,9 @@ struct BottomSheetView: View {
                                         ProfilView()
                                             .presentationDetents([.large])
                                     } label: {
+                                        Image(systemName: "person.circle")
                                         Text(name)
+                                            .cornerRadius(20)
                                     }
                                 }
                             }

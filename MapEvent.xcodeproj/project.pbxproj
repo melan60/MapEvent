@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		8E2500D82B1F47B600777601 /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2500D72B1F47B600777601 /* PlaceModel.swift */; };
 		8E2500DA2B1F47C300777601 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2500D92B1F47C300777601 /* ViewModel.swift */; };
-		8E2500DC2B1F47CC00777601 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2500DB2B1F47CC00777601 /* Service.swift */; };
+		8E2500DC2B1F47CC00777601 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2500DB2B1F47CC00777601 /* ApiService.swift */; };
 		8E332BCE2B1DCD33001C4BF7 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E332BCD2B1DCD33001C4BF7 /* BottomSheetView.swift */; };
 		8E332BD02B1DD431001C4BF7 /* ProfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E332BCF2B1DD431001C4BF7 /* ProfilView.swift */; };
 		8E332BD22B1DD65B001C4BF7 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E332BD12B1DD65B001C4BF7 /* test.swift */; };
@@ -24,7 +24,7 @@
 /* Begin PBXFileReference section */
 		8E2500D72B1F47B600777601 /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
 		8E2500D92B1F47C300777601 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		8E2500DB2B1F47CC00777601 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		8E2500DB2B1F47CC00777601 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		8E332BCD2B1DCD33001C4BF7 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
 		8E332BCF2B1DD431001C4BF7 /* ProfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilView.swift; sourceTree = "<group>"; };
 		8E332BD12B1DD65B001C4BF7 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
@@ -51,7 +51,7 @@
 		8E332BC92B1DCCFD001C4BF7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				8E2500DB2B1F47CC00777601 /* Service.swift */,
+				8E2500DB2B1F47CC00777601 /* ApiService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -194,7 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED453582B178F64008D13C1 /* ContentView.swift in Sources */,
-				8E2500DC2B1F47CC00777601 /* Service.swift in Sources */,
+				8E2500DC2B1F47CC00777601 /* ApiService.swift in Sources */,
 				8E2500D82B1F47B600777601 /* PlaceModel.swift in Sources */,
 				8E40B84A2B20C47E008921C9 /* UserInPlaceModel.swift in Sources */,
 				8ED453562B178F64008D13C1 /* MapEventApp.swift in Sources */,
