@@ -4,9 +4,9 @@ const getAllPlaces = async (req, res) => {
    try {
       pool.query("SELECT * FROM Place", (err, results) => {
          if (err) {
-            return res.status(400).send({ success: 1, error: err });
+            return res.status(400).send(err);
          }
-         return res.status(200).send({ success: 0, data: results.rows });
+         return res.status(200).send(results.rows);
       });
    } catch (e) {
       console.log(e);
@@ -40,7 +40,7 @@ const deleteInOnePlace = async (req, res) => {
             }
             try {
                pool.query(
-                  "UPDATE Person SET isPlaced = false WHERE id_person = $1",
+                  "UPDATE Person SET is_placed = false WHERE id_person = $1",
                   [id_person],
                   (error, result) => {
                      if (error) {
@@ -73,7 +73,7 @@ const addInOnePlace = async (req, res) => {
             }
             try {
                pool.query(
-                  "UPDATE Person SET isPlaced = true WHERE id_person = $1",
+                  "UPDATE Person SET is_placed = true WHERE id_person = $1",
                   [id_person],
                   (error, result) => {
                      if (error) {

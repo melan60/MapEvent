@@ -6,7 +6,7 @@ const getAllUsers = async (req, res) => {
          if (err) {
             return res.status(400).send({ success: 1, error: err });
          }
-         return res.status(200).send({ success: 0, data: results.rows });
+         return res.status(200).send(results.rows);
       });
    } catch (e) {
       console.log(e);

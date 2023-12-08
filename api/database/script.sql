@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS Person (
     email VARCHAR(100),
     company VARCHAR(100),
     activity VARCHAR(100),
-    isPlaced BOOLEAN DEFAULT FALSE,
+    is_placed BOOLEAN DEFAULT FALSE,
     PRIMARY KEY(id_person)
 );
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS is_in (
     FOREIGN KEY(id_place) REFERENCES Place(id_place)
 );
 
-INSERT INTO Person(id_person, firstname, lastname, email, company, activity, isPlaced) VALUES 
+INSERT INTO Person(id_person, firstname, lastname, email, company, activity, is_placed) VALUES 
     (default, 'Bruno', 'Charles', 'bru@gmail.com', 'Apple', 'Développeur', true),
     (default, 'Valérie', 'Martin', 'val@gmail.com', 'LVMH', 'RH', true),
     (default, 'François', 'Bernard', 'fran@gmail.com', 'Microsoft', 'Chef de projet', true);
