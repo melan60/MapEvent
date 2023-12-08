@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BottomSheetView: View {
     let names = ["Holly", "Josh", "Rhonda", "Ted", "Teddy"]
-    let person = Person(id_person: 1, firstname: "firstname", lastname: "name", email: "email", company: "company", activity: "activity", isPlaced: false)
+    let person = Person(id_person: 1, firstname: "firstname", lastname: "name", email: "email", company: "company", activity: "activity", is_placed: false)
     @StateObject var viewModel = ViewModel(service:ApiService())
 
     @State private var showingCredits = false

@@ -18,7 +18,7 @@ enum ApiError: Error {
 struct ApiService {
     let baseUrl = "http://10.248.1.55:3000"
     
-    func fetchPlaces() async throws -> [Place] {
+    func fetchAllPlaces() async throws -> [Place] {
         let endpoint = baseUrl + "/places"
         
         guard let url = URL(string: endpoint) else {
@@ -43,17 +43,13 @@ struct ApiService {
         }
 
         let (data, response) = try await URLSession.shared.data(from:url)
-        print(data)
+
         let decodedData = try JSONDecoder().decode([Person].self, from: data)
         print(decodedData)
         
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
             throw ApiError.invalidStatusCode
         }
-
-        print("marfiphe")
-//        let decodedData = try JSONDecoder().decode([Person].self, from: data)
-//        print(decodedData)
 
         return decodedData
     }

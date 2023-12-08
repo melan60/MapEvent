@@ -9,7 +9,7 @@ import Foundation
 
 struct Place: Codable, Hashable {
     var id_place : Int
-    var name: String
+    var place_name: String
     var longitude: Float
     var latitude: Float
 }

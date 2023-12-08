@@ -14,5 +14,5 @@ struct Person: Codable, Hashable {
     var email: String
     var company: String
     var activity: String
-    var isPlaced: Bool
+    var is_placed: Bool
 }
