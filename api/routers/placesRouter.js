@@ -4,7 +4,10 @@ const router = express.Router();
 
 router.get("/", placesServices.getAllPlaces);
 
-// TODO
-// Modifier la présence dans is_in
+router.get("/:id_place", placesServices.getPlaceById);
+
+router.delete("/:id_place", placesServices.deleteInOnePlace);
+
+router.post("/:id_place", placesServices.addInOnePlace);
 
 module.exports = router;

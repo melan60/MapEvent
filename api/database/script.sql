@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS Person (
     email VARCHAR(100),
     company VARCHAR(100),
     activity VARCHAR(100),
+    isPlaced BOOLEAN DEFAULT FALSE,
     PRIMARY KEY(id_person)
 );
 
@@ -29,16 +30,16 @@ CREATE TABLE IF NOT EXISTS Place (
 CREATE TABLE IF NOT EXISTS is_in (
     id_place INT,
     id_person INT,
-    date DATE,
+    date timestamp,
     PRIMARY KEY(id_place, id_person),
     FOREIGN KEY(id_person) REFERENCES Person(id_person),
     FOREIGN KEY(id_place) REFERENCES Place(id_place)
 );
 
-INSERT INTO Person(id_person, firstname, lastname, email, company, activity) VALUES 
-    (default, 'Bruno', 'Charles', 'bru@gmail.com', 'Apple', 'Développeur'),
-    (default, 'Valérie', 'Martin', 'val@gmail.com', 'LVMH', 'RH'),
-    (default, 'François', 'Bernard', 'fran@gmail.com', 'Microsoft', 'Chef de projet');
+INSERT INTO Person(id_person, firstname, lastname, email, company, activity, isPlaced) VALUES 
+    (default, 'Bruno', 'Charles', 'bru@gmail.com', 'Apple', 'Développeur', true),
+    (default, 'Valérie', 'Martin', 'val@gmail.com', 'LVMH', 'RH', true),
+    (default, 'François', 'Bernard', 'fran@gmail.com', 'Microsoft', 'Chef de projet', true);
 
 INSERT INTO Place(id_place, place_name, longitude, latitude) VALUES
     (default, 'Le Dauphin', 3.1585527 ,50.7217242),

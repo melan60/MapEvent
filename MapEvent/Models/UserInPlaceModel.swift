@@ -8,6 +8,7 @@
 import Foundation
 
 struct UserInPlace: Decodable, Hashable {
-    var date: Date
-    var users: [User]
+    var date: TimeInterval
+    var id_user: Int
+    var id_place : Int
 }
