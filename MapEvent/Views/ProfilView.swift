@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProfilView: View {
-    var profile : User
+    var profile : Person
 
     
     var body: some View {
@@ -23,7 +23,7 @@ struct ProfilView: View {
                 Text(profile.firstname)
                     .font(.system(size: 45))
                     .bold()
-                Text(profile.name)
+                Text(profile.lastname)
                     .font(.system(size: 45))
                     .bold()
             }
@@ -66,6 +66,6 @@ struct ProfilView: View {
 
 struct ProfilView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfilView(profile: User(firstname: "firstname", name: "name", email: "email", company: "company", activity: "activity"))
+        ProfilView(profile: Person(id_person: 1, firstname: "firstname", lastname: "name", email: "email", company: "company", activity: "activity", isPlaced: false))
     }
 }

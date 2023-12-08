@@ -9,7 +9,8 @@ import SwiftUI
 
 struct BottomSheetView: View {
     let names = ["Holly", "Josh", "Rhonda", "Ted", "Teddy"]
-    let user = User(firstname: "firstname", name: "name", email: "email", company: "company", activity: "activity")
+    let person = Person(id_person: 1, firstname: "firstname", lastname: "name", email: "email", company: "company", activity: "activity", isPlaced: false)
+    @StateObject var viewModel = ViewModel(service:ApiService())
 
     @State private var showingCredits = false
     @State private var searchText = ""
@@ -26,17 +27,26 @@ struct BottomSheetView: View {
                 HStack {
                     NavigationStack{
                         Text("")
-                            List {
-                                ForEach(searchResults, id: \.self) { name in
+                        switch(viewModel.state) {
+                            case .loading:
+                                ProgressView()
+                            case .success(let persons):
+                                ForEach(persons, id: \.self) { personne in
                                     NavigationLink {
-                                        ProfilView(profile: user)
+                                        ProfilView(profile: personne)
                                             .presentationDetents([.large])
                                     } label: {
                                         Image(systemName: "person.circle")
-                                        Text(name)
+                                        Text(personne.firstname)
                                             .cornerRadius(20)
                                     }
                                 }
+                        default:
+                            Text("oskour")
+                            EmptyView()
+                        }
+                            List {
+                                
                             }
                             .toolbar {
                                 Button("Lieu") {
@@ -55,7 +65,9 @@ struct BottomSheetView: View {
             .presentationCornerRadius(30)
             .presentationBackgroundInteraction(.enabled)
             .interactiveDismissDisabled()
-            
+            .task {
+                await viewModel.getAllPersons()
+            }
         }
         
             

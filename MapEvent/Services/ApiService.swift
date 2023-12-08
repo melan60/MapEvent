@@ -16,7 +16,7 @@ enum ApiError: Error {
 }
 
 struct ApiService {
-    let baseUrl = "localhost:5000"
+    let baseUrl = "http://10.248.1.55:3000"
     
     func fetchPlaces() async throws -> [Place] {
         let endpoint = baseUrl + "/places"
@@ -35,24 +35,30 @@ struct ApiService {
         return decodedData
     }
     
-    func fetchAllUsers() async throws -> [User] {
+    func fetchAllPersons() async throws -> [Person] {
         let endpoint = baseUrl + "/users"
         
         guard let url = URL(string: endpoint) else {
             throw ApiError.invalidUrl
         }
-        let (data, response) = try await URLSession.shared.data(from: url)
+
+        let (data, response) = try await URLSession.shared.data(from:url)
+        print(data)
+        let decodedData = try JSONDecoder().decode([Person].self, from: data)
+        print(decodedData)
         
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
             throw ApiError.invalidStatusCode
         }
-        
-        let decodedData = try JSONDecoder().decode([User].self, from: data)
-        
+
+        print("marfiphe")
+//        let decodedData = try JSONDecoder().decode([Person].self, from: data)
+//        print(decodedData)
+
         return decodedData
     }
     
-    func fetchUsersByPlace(for place: String) async throws -> [User] {
+    func fetchPersonsByPlace(for place: String) async throws -> [Person] {
         let endpoint = baseUrl + "/users?place=\(place)"
         
         guard let url = URL(string: endpoint) else {
@@ -64,7 +70,7 @@ struct ApiService {
             throw ApiError.invalidStatusCode
         }
         
-        let decodedData = try JSONDecoder().decode([User].self, from: data)
+        let decodedData = try JSONDecoder().decode([Person].self, from: data)
         
         return decodedData
     }

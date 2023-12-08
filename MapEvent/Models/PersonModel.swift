@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct User: Codable, Hashable {
+struct Person: Codable, Hashable {
     var id_person : Int
     var firstname: String
-    var name: String
+    var lastname: String
     var email: String
     var company: String
     var activity: String

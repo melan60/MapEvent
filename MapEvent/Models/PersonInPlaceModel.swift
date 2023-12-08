@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct UserInPlace: Decodable, Hashable {
+struct PersonInPlace: Decodable, Hashable {
     var date: TimeInterval
-    var id_user: Int
+    var id_person: Int
     var id_place : Int
 }

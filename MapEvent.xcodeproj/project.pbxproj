@@ -14,8 +14,8 @@
 		8E332BCE2B1DCD33001C4BF7 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E332BCD2B1DCD33001C4BF7 /* BottomSheetView.swift */; };
 		8E332BD02B1DD431001C4BF7 /* ProfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E332BCF2B1DD431001C4BF7 /* ProfilView.swift */; };
 		8E332BD22B1DD65B001C4BF7 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E332BD12B1DD65B001C4BF7 /* test.swift */; };
-		8E40B8472B20C2F7008921C9 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E40B8462B20C2F7008921C9 /* UserModel.swift */; };
-		8E40B84A2B20C47E008921C9 /* UserInPlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E40B8492B20C47E008921C9 /* UserInPlaceModel.swift */; };
+		8E40B8472B20C2F7008921C9 /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E40B8462B20C2F7008921C9 /* PersonModel.swift */; };
+		8E40B84A2B20C47E008921C9 /* PersonInPlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E40B8492B20C47E008921C9 /* PersonInPlaceModel.swift */; };
 		8ED453562B178F64008D13C1 /* MapEventApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED453552B178F64008D13C1 /* MapEventApp.swift */; };
 		8ED453582B178F64008D13C1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED453572B178F64008D13C1 /* ContentView.swift */; };
 		8ED4535A2B178F64008D13C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED453592B178F64008D13C1 /* Assets.xcassets */; };
@@ -30,8 +30,8 @@
 		8E332BCD2B1DCD33001C4BF7 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
 		8E332BCF2B1DD431001C4BF7 /* ProfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilView.swift; sourceTree = "<group>"; };
 		8E332BD12B1DD65B001C4BF7 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
-		8E40B8462B20C2F7008921C9 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		8E40B8492B20C47E008921C9 /* UserInPlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInPlaceModel.swift; sourceTree = "<group>"; };
+		8E40B8462B20C2F7008921C9 /* PersonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonModel.swift; sourceTree = "<group>"; };
+		8E40B8492B20C47E008921C9 /* PersonInPlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonInPlaceModel.swift; sourceTree = "<group>"; };
 		8ED453522B178F64008D13C1 /* MapEvent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapEvent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED453552B178F64008D13C1 /* MapEventApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEventApp.swift; sourceTree = "<group>"; };
 		8ED453572B178F64008D13C1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -70,8 +70,8 @@
 			isa = PBXGroup;
 			children = (
 				8E2500D72B1F47B600777601 /* PlaceModel.swift */,
-				8E40B8462B20C2F7008921C9 /* UserModel.swift */,
-				8E40B8492B20C47E008921C9 /* UserInPlaceModel.swift */,
+				8E40B8462B20C2F7008921C9 /* PersonModel.swift */,
+				8E40B8492B20C47E008921C9 /* PersonInPlaceModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -200,12 +200,12 @@
 				8E2500DC2B1F47CC00777601 /* ApiService.swift in Sources */,
 				8E2500D82B1F47B600777601 /* PlaceModel.swift in Sources */,
 				5B6FF08B2B20D1DD0007C0D1 /* MapView.swift in Sources */,
-				8E40B84A2B20C47E008921C9 /* UserInPlaceModel.swift in Sources */,
+				8E40B84A2B20C47E008921C9 /* PersonInPlaceModel.swift in Sources */,
 				8ED453562B178F64008D13C1 /* MapEventApp.swift in Sources */,
 				8E332BD02B1DD431001C4BF7 /* ProfilView.swift in Sources */,
 				8E332BD22B1DD65B001C4BF7 /* test.swift in Sources */,
 				8E332BCE2B1DCD33001C4BF7 /* BottomSheetView.swift in Sources */,
-				8E40B8472B20C2F7008921C9 /* UserModel.swift in Sources */,
+				8E40B8472B20C2F7008921C9 /* PersonModel.swift in Sources */,
 				8E2500DA2B1F47C300777601 /* ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

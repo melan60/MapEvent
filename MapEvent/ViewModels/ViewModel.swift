@@ -6,3 +6,33 @@
 //
 
 import Foundation
+
+@MainActor
+class ViewModel: ObservableObject {
+    enum State {
+        case notAvailable
+        case loading
+        case success(data: [Person])
+        case failed(error: Error)
+    }
+    
+    private let service: ApiService
+    
+    @Published var state: State = .notAvailable
+    
+    init(service: ApiService) {
+        self.service = service
+    }
+    
+    func getAllPersons() async {
+        self.state = .loading
+        do {
+            let persons = try await service.fetchAllPersons()
+            self.state = .success(data: persons)
+            print(persons)
+        } catch {
+            self.state = .failed(error: error)
+            print(error)
+        }
+    }
+}
