@@ -19,7 +19,7 @@ struct BottomSheetView: View {
     let heights = stride(from: 0.15, through: 1.0, by: 0.1).map { PresentationDetent.fraction($0) }
 
     var body: some View {
-        Button("Show Credits") {
+        Button("") {
             showingCredits.toggle()
         }
         .sheet(isPresented: $showingCredits) {
@@ -32,14 +32,21 @@ struct BottomSheetView: View {
                                 ProgressView()
                             case .success(let persons):
                                 ForEach(persons, id: \.self) { personne in
-                                    NavigationLink {
-                                        ProfilView(profile: personne)
-                                            .presentationDetents([.large])
-                                    } label: {
-                                        Image(systemName: "person.circle")
-                                        Text(personne.firstname)
-                                            .cornerRadius(20)
+                                    List {
+                                        NavigationLink {
+                                            ProfilView(profile: personne)
+                                                .presentationDetents([.large])
+                                        } label: {
+                                            HStack {
+                                                Image(systemName: "person.circle")
+                                                Text(personne.firstname)
+                                                    .cornerRadius(20)
+                                            }
+                                            .padding(0)
+                                            .frame(height: 10)
+                                        }
                                     }
+                                    
                                 }
                         default:
                             Text("oskour")
