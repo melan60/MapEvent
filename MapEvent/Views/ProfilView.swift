@@ -12,11 +12,13 @@ struct ProfilView: View {
 
     
     var body: some View {
-        VStack{
+        VStack(alignment: .center){
             Image(systemName: "person.circle")
                 .resizable()
                 .frame(width:150, height: 150)
                 .multilineTextAlignment(.center)
+                .padding(.top,30)
+                .padding(.bottom,10)
                 
             
             HStack(alignment: .center){
@@ -27,38 +29,84 @@ struct ProfilView: View {
                     .font(.system(size: 45))
                     .bold()
             }
-            Spacer()
+            .padding(.top,40)
+            .padding(.bottom,30)
             
-                HStack(alignment: .center){
-                    Text("Email : ")
-                        .font(.system(size: 25))
-                        .bold()
-                        
-                    Text(profile.email)
-                        .font(.system(size: 25))
+            
+            VStack(alignment: .leading) {
+                HStack(alignment: .top){
+                    
+                    //Image(systemName: "envelope.circle")
+                    Image(systemName: "at")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width:60, height: 60)
+                        .foregroundColor(.blue)
+                    
+                    VStack{
+                        Text("Email ")
+                            .font(.system(size: 18))
+                            .foregroundStyle(.gray)
+                            .bold()
+                            
+                        Text(profile.email)
+                            .font(.system(size: 25))
+                    }
+                    .padding(.leading)
+                    
+                    
                 }
                 .padding(.bottom,20)
                 
+                    
                 
                 HStack(alignment: .center){
-                    Text("Company : ")
-                        .font(.system(size: 25))
-                        .bold()
-                    Text(profile.company)
-                        .font(.system(size: 25))
+                    //person.3
+                    Image(systemName: "house")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width:60, height: 60)
+                        .foregroundColor(.blue)
+                    
+                    VStack{
+                        Text("Entreprise  ")
+                            .font(.system(size: 18))
+                            .bold()
+                            .foregroundStyle(.gray)
+                        Text(profile.company)
+                            .font(.system(size: 25))
+                    }
+                    .padding(.leading)
+                    
                 }
                 .padding(.bottom,20)
+                
             
-            HStack(alignment: .center){
-                    Text("Activity : ")
-                        .font(.system(size: 25))
-                        .bold()
-                    Text(profile.activity)
-                        .font(.system(size: 25))
+                HStack(alignment: .center){
+                    Image(systemName: "bookmark")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width:50, height: 50)
+                        .foregroundColor(.blue)
+                    
+                    VStack{
+                        Text("Domaine")
+                            .font(.system(size: 18))
+                            .bold()
+                            .foregroundStyle(.gray)
+                        Text(profile.activity)
+                            .font(.system(size: 25))
+                    }
+                    .padding(.leading)
+                    
                 }
+                .padding(.bottom,150)
+             
+            }
             
             
-            Spacer()
+            
+           
         }
         
     }
