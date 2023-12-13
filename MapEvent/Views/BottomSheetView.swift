@@ -12,7 +12,7 @@ struct BottomSheetView: View {
     let person = Person(id_person: 1, firstname: "firstname", lastname: "name", email: "email", company: "company", activity: "activity", is_placed: false)
     @StateObject var viewModel = ViewModel(service:ApiService())
 
-    @State private var showingCredits = false
+    @State private var showingCredits = true
     @State private var searchText = ""
     
     // List of heights from 0.15 to 1.0 increasing by 0.1

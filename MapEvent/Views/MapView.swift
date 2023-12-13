@@ -25,9 +25,23 @@ struct MapView: View {
                 case .loading:
                     ProgressView()
                 case .success(let locations):
-                    Map(coordinateRegion: $region, annotationItems: locations) { location in
-                        MapMarker(coordinate: location.coordinate)
-                    }
+                Map(coordinateRegion: $region, annotationItems: locations, annotationContent: { location in
+                    MapAnnotation(
+                        coordinate: location.coordinate,
+                        content: {
+                            Button {
+                                
+                            } label: {
+                                HStack() {
+                                    Image(systemName: "pin.fill").foregroundColor(.red)
+                                    Text(location.name)
+                                        .bold()
+                                }.foregroundColor(.red)
+                            }
+                        }
+                    )
+                    
+                })
                     .navigationTitle("Map")
                     .edgesIgnoringSafeArea(.all)
                 default:
