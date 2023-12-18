@@ -16,7 +16,7 @@ enum ApiError: Error {
 }
 
 struct ApiService {
-    let baseUrl = "http://10.248.3.214:3000"
+    let baseUrl = "http://10.248.1.27:3000"
     
     func fetchAllPlaces() async throws -> [Place] {
         let endpoint = baseUrl + "/places"
