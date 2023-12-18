@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct BottomSheetView: View {
-    let names = ["Holly", "Josh", "Rhonda", "Ted", "Teddy"]
-    let person = Person(id_person: 1, firstname: "firstname", lastname: "name", email: "email", company: "company", activity: "activity", is_placed: false)
     @StateObject var viewModel = ViewModel(service:ApiService())
 
     @State private var showingCredits = true
@@ -17,6 +15,12 @@ struct BottomSheetView: View {
     
     // List of heights from 0.15 to 1.0 increasing by 0.1
     let heights = stride(from: 0.15, through: 1.0, by: 0.1).map { PresentationDetent.fraction($0) }
+    
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
 
     var body: some View {
         Button("") {
@@ -26,30 +30,45 @@ struct BottomSheetView: View {
             VStack {
                 HStack {
                     NavigationStack{
-                        Text("")
                         switch(viewModel.state) {
                             case .loading:
                                 ProgressView()
                             case .success(let persons):
-                                ForEach(persons, id: \.self) { personne in
-                                    List {
+                                LazyVGrid(columns: columns, spacing: 20) {
+                                    ForEach(persons, id: \.self) { person in
                                         NavigationLink {
-                                            ProfilView(profile: personne)
+                                            ProfilView(profile: person)
                                                 .presentationDetents([.large])
                                         } label: {
-                                            HStack {
+                                            VStack {
                                                 Image(systemName: "person.circle")
-                                                Text(personne.firstname)
-                                                    .cornerRadius(20)
+                                                Text(person.firstname)
+                                                Text(person.lastname)
+//                                                    .cornerRadius(20)
                                             }
                                             .padding(0)
-                                            .frame(height: 10)
+                                            .frame(height: 40)
                                         }
                                     }
-                                    
                                 }
+                                    
+//                                    List {
+//                                        NavigationLink {
+//                                            ProfilView(profile: person)
+//                                                .presentationDetents([.large])
+//                                        } label: {
+//                                            HStack {
+//                                                Image(systemName: "person.circle")
+//                                                Text(person.firstname)
+//                                                    .cornerRadius(20)
+//                                            }
+//                                            .padding(0)
+//                                            .frame(height: 10)
+//                                        }
+//                                    }
+                                    
+//                                }
                         default:
-                            Text("oskour")
                             EmptyView()
                         }
                             List {
@@ -102,13 +121,13 @@ struct BottomSheetView: View {
 //                .interactiveDismissDisabled()
 //        }
         
-        var searchResults: [String] {
-               if searchText.isEmpty {
-                   return names
-               } else {
-                   return names.filter { $0.lowercased().contains(searchText.lowercased()) }
-               }
-           }
+//        var searchResults: [String] {
+//               if searchText.isEmpty {
+//                   return persons
+//               } else {
+//                   return names.filter { $0.lowercased().contains(searchText.lowercased()) }
+//               }
+//           }
     }
     
 }
