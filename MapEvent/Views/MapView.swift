@@ -37,10 +37,9 @@ struct MapView: View {
                                     
                                 } label: {
                                     HStack() {
-                                        Image(systemName: "pin.fill").foregroundColor(.red)
                                         Text(location.name)
                                             .bold()
-                                    }.foregroundColor(.red)
+                                    }
                                 }
                             }
                         )
@@ -63,8 +62,8 @@ struct MapView: View {
                     .resizable()
                     .frame(width:50, height: 50)
                     .foregroundColor(.blue)
-                    .padding(.bottom,600)
             }
+            .padding(.bottom,600)
             
 //            NavigationLink{
 //                ProfilView(profile : Person(id_person: 1, firstname: "firstname", lastname: "name", email: "email", company: "company", activity: "activity", is_placed: false))
