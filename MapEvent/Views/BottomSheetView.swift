@@ -9,8 +9,7 @@ import SwiftUI
 
 struct BottomSheetView: View {
     @StateObject var viewModel = ViewModel(service:ApiService())
-
-    @State private var showingCredits = true
+    
     @State private var searchText = ""
     
     // List of heights from 0.15 to 1.0 increasing by 0.1
@@ -23,35 +22,31 @@ struct BottomSheetView: View {
     ]
 
     var body: some View {
-        Button("") {
-            showingCredits.toggle()
-        }
-        .sheet(isPresented: $showingCredits) {
-            VStack {
-                HStack {
-                    NavigationStack{
-                        switch(viewModel.state) {
-                            case .loading:
-                                ProgressView()
-                            case .success(let persons):
-                                LazyVGrid(columns: columns, spacing: 20) {
-                                    ForEach(persons, id: \.self) { person in
-                                        NavigationLink {
-                                            ProfilView(profile: person)
-                                                .presentationDetents([.large])
-                                        } label: {
-                                            VStack {
-                                                Image(systemName: "person.circle")
-                                                Text(person.firstname)
-                                                Text(person.lastname)
+        VStack {
+            HStack {
+                NavigationStack{
+                    switch(viewModel.state) {
+                        case .loading:
+                            ProgressView()
+                        case .success(let persons):
+                            LazyVGrid(columns: columns, spacing: 20) {
+                                ForEach(persons, id: \.self) { person in
+                                    NavigationLink {
+                                        ProfilView(profile: person)
+                                            .presentationDetents([.large])
+                                    } label: {
+                                        VStack {
+                                            Image(systemName: "person.circle")
+                                            Text(person.firstname)
+                                            Text(person.lastname)
 //                                                    .cornerRadius(20)
-                                            }
-                                            .padding(0)
-                                            .frame(height: 40)
                                         }
+                                        .padding(0)
+                                        .frame(height: 40)
                                     }
                                 }
-                                    
+                            }
+                                
 //                                    List {
 //                                        NavigationLink {
 //                                            ProfilView(profile: person)
@@ -66,7 +61,7 @@ struct BottomSheetView: View {
 //                                            .frame(height: 10)
 //                                        }
 //                                    }
-                                    
+                                
 //                                }
                         default:
                             EmptyView()
@@ -90,7 +85,6 @@ struct BottomSheetView: View {
             .task {
                 await viewModel.getAllPersons()
             }
-        }
         
             
 //            NavigationStack {

@@ -17,6 +17,7 @@ struct Location: Identifiable {
 struct MapView: View {
     @StateObject var viewModelPlaces = ViewModelPlaces(service:ApiService())
     
+    @State private var showingCredits = false
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 50.7235038, longitude: 3.1605714), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
     
     var body: some View {
@@ -33,12 +34,16 @@ struct MapView: View {
                             coordinate: location.coordinate,
                             content: {
                                 Button {
-                                    
+                                    showingCredits.toggle()
                                 } label: {
                                     HStack() {
+                                        // Image(systemName: "pin.fill").foregroundColor(.red)
                                         Text(location.name)
                                             .bold()
-                                    }
+                                    }.foregroundColor(.blue)
+                                }
+                                .sheet(isPresented: $showingCredits){
+                                    BottomSheetView()
                                 }
                             }
                         )
