@@ -78,10 +78,6 @@ struct BottomSheetView: View {
                                 Button("Lieu") {
                                     print("Lieu tapped!")
                                 }
-
-                                Button("Profil") {
-                                    print("Profil tapped!")
-                                }
                             }
                     }
                     .searchable(text: $searchText, prompt: "Un lieu, une personne...")

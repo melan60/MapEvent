@@ -21,6 +21,7 @@
 		8ED453582B178F64008D13C1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED453572B178F64008D13C1 /* ContentView.swift */; };
 		8ED4535A2B178F64008D13C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED453592B178F64008D13C1 /* Assets.xcassets */; };
 		8ED4535D2B178F64008D13C1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED4535C2B178F64008D13C1 /* Preview Assets.xcassets */; };
+		9FBD8F3E2B3343AA004CAB9E /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD8F3D2B3343AA004CAB9E /* ProfileEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		8ED453572B178F64008D13C1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8ED453592B178F64008D13C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8ED4535C2B178F64008D13C1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9FBD8F3D2B3343AA004CAB9E /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			children = (
 				8E332BCD2B1DCD33001C4BF7 /* BottomSheetView.swift */,
 				8E332BCF2B1DD431001C4BF7 /* ProfilView.swift */,
+				9FBD8F3D2B3343AA004CAB9E /* ProfileEditView.swift */,
 				8E332BD12B1DD65B001C4BF7 /* test.swift */,
 				5B6FF08A2B20D1DD0007C0D1 /* MapView.swift */,
 			);
@@ -207,6 +210,7 @@
 				8E40B84A2B20C47E008921C9 /* PersonInPlaceModel.swift in Sources */,
 				8ED453562B178F64008D13C1 /* MapEventApp.swift in Sources */,
 				8E332BD02B1DD431001C4BF7 /* ProfilView.swift in Sources */,
+				9FBD8F3E2B3343AA004CAB9E /* ProfileEditView.swift in Sources */,
 				8E332BD22B1DD65B001C4BF7 /* test.swift in Sources */,
 				8E332BCE2B1DCD33001C4BF7 /* BottomSheetView.swift in Sources */,
 				8E40B8472B20C2F7008921C9 /* PersonModel.swift in Sources */,
