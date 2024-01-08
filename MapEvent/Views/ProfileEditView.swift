@@ -9,8 +9,10 @@ import SwiftUI
 
 struct ProfileEditView: View {
     var profile : Person
-    @State private var givenName: String = ""
     @State private var email: String = ""
+    @State private var company: String = ""
+    @State private var activity: String = ""
+    
     var body: some View {
         VStack(alignment: .center){
             Image(systemName: "person.circle")
@@ -32,91 +34,94 @@ struct ProfileEditView: View {
             .padding(.top,40)
             .padding(.bottom,30)
             
-            
-            VStack(alignment: .leading) {
-                HStack(alignment: .top){
-                    
-                    //Image(systemName: "envelope.circle")
-                    Image(systemName: "at")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width:60, height: 60)
-                        .foregroundColor(.blue)
-                    
-                    VStack{
-                        Text("Email ")
-                            .font(.system(size: 18))
-                            .foregroundStyle(.gray)
-                            .bold()
+                VStack{
+                    HStack(alignment: .top){
+                        
+                        //Image(systemName: "envelope.circle")
+                        Image(systemName: "at")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width:60, height: 60)
+                            .foregroundColor(.blue)
+                        
+                        VStack (alignment: .leading){
+                            Text("Email")
+                                .font(.system(size: 18))
+                                .foregroundStyle(.gray)
+                                .bold()
                             
-                        TextField(
-                            profile.email,
-                            text : $email
-                        )
-                        .font(.system(size: 25))
+                            TextField(
+                                profile.email,
+                                text : $email
+                            )
+                            .onAppear {
+                                email = profile.email
+                                    }
+                            .font(.system(size: 25))
                             
+                        }
+                        .padding(.leading)
+                        
+                        
                     }
+                    .padding(.bottom,20)
                     .padding(.leading)
                     
                     
-                }
-                .padding(.bottom,20)
-                
                     
-                
-                HStack(alignment: .center){
-                    //person.3
-                    Image(systemName: "house")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width:60, height: 60)
-                        .foregroundColor(.blue)
-                    
-                    VStack{
-                        Text("Entreprise  ")
-                            .font(.system(size: 18))
-                            .bold()
-                            .foregroundStyle(.gray)
-                        Text(profile.company)
+                    HStack(alignment: .center){
+                        //person.3
+                        Image(systemName: "house")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width:60, height: 60)
+                            .foregroundColor(.blue)
+                        
+                        VStack (alignment: .leading){
+                            Text("Entreprise  ")
+                                .font(.system(size: 18))
+                                .bold()
+                                .foregroundStyle(.gray)
+                            TextField(profile.company,text: $company)
+                            .onAppear {company = profile.company}
                             .font(.system(size: 25))
+                        }
+                        .padding(.leading)
+                        
                     }
+                    .padding(.bottom,20)
+                    .padding(.leading)
+                    
+                    
+                    HStack(alignment: .center){
+                        Image(systemName: "bookmark")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width:50, height: 50)
+                            .foregroundColor(.blue)
+                        
+                        VStack(alignment: .leading){
+                            Text("Domaine")
+                                .font(.system(size: 18))
+                                .bold()
+                                .foregroundStyle(.gray)
+                            TextField(profile.activity, text:$activity)
+                                .onAppear {activity = profile.activity}
+                                .font(.system(size: 25))
+                        }
+                        .padding(.leading)
+                        
+                    }
+                    .padding(.bottom,150)
                     .padding(.leading)
                     
                 }
-                .padding(.bottom,20)
-                
-            
-                HStack(alignment: .center){
-                    Image(systemName: "bookmark")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width:50, height: 50)
-                        .foregroundColor(.blue)
-                    
-                    VStack{
-                        Text("Domaine")
-                            .font(.system(size: 18))
-                            .bold()
-                            .foregroundStyle(.gray)
-                        Text(profile.activity)
-                            .font(.system(size: 25))
-                    }
-                    .padding(.leading)
-                    
-                }
-                .padding(.bottom,150)
-             
-            }
-            
-            
-            
-           
         }
     }
 }
 
 struct ProfileEditView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileEditView(profile: Person(id_person: 1, firstname: "firstname", lastname: "name", email: "email", company: "company", activity: "activity", is_placed: false))
+        ProfileEditView(profile: Person(id_person: 1, firstname: "firstnamet", lastname: "namet", email: "emailt", company: "companyt", activity: "activityt", is_placed: false))
     }
 }

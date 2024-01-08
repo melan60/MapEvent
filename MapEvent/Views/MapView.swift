@@ -16,6 +16,7 @@ struct Location: Identifiable {
 
 struct MapView: View {
     @StateObject var viewModelPlaces = ViewModelPlaces(service:ApiService())
+    @StateObject var viewModel = ViewModel(service:ApiService())
     
     @State private var showingCredits = false
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 50.7235038, longitude: 3.1605714), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
@@ -58,19 +59,33 @@ struct MapView: View {
                 await viewModelPlaces.getAllPlaces()
             }
             NavigationLink{
-                    ProfilView(profile : Person(id_person: 1, firstname: "firstname", lastname: "name", email: "email", company: "company", activity: "activity", is_placed: false))
-                } label: {
-                    Image(systemName: "person.circle")
-                        .resizable()
-                        .frame(width:60, height: 60)
-                        .foregroundColor(.blue)
-                }
-                .padding(.trailing,10)
+                            switch viewModel.state{
+                                case .loading:
+                                    ProgressView()
+                                case .success(let persons):
+                                    let person = persons[0]
+                                    ProfileEditView(profile :person)
+                                default:
+                                    Text("df")
+                                    EmptyView()
+                            }
+                                
+                            } label: {
+                                Image(systemName: "person.circle")
+                                    .resizable()
+                                    .frame(width:60, height: 60)
+                                    .foregroundColor(.blue)
+                            }
+                            .padding(.trailing,10)
+                            .task {
+                                await viewModel.getAllPersons()
+                            }
+                        }
             }
                 
             }
         }     
-    }
+    
 
 
 struct MapView_Previews: PreviewProvider {
