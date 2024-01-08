@@ -30,7 +30,7 @@ struct BottomSheetView: View {
                             ProgressView()
                         case .success(let persons):
                             LazyVGrid(columns: columns, spacing: 20) {
-                                ForEach(persons, id: \.self) { person in
+                                ForEach(searchResults, id: \.self) { person in
                                     NavigationLink {
                                         ProfilView(profile: person)
                                             .presentationDetents([.large])

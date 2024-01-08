@@ -115,6 +115,10 @@ struct ProfileEditView: View {
                     .padding(.bottom,150)
                     .padding(.leading)
                     
+                    Button("Appliquer les modification"){
+                        
+                    }
+                    
                 }
         }
     }
