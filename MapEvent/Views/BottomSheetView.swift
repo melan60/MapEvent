@@ -13,7 +13,7 @@ struct BottomSheetView: View {
     @State private var searchText = ""
     
     // List of heights from 0.15 to 1.0 increasing by 0.1
-    let heights = stride(from: 0.15, through: 1.0, by: 0.1).map { PresentationDetent.fraction($0) }
+    let heights = stride(from: 0.2, through: 1.0, by: 0.1).map { PresentationDetent.fraction($0) }
     
     let columns = [
         GridItem(.flexible()),
@@ -45,24 +45,15 @@ struct BottomSheetView: View {
                                         .frame(height: 40)
                                     }
                                 }
+                            }.padding(.top,10)
+                            var searchResults: [Person] {
+                                if searchText.isEmpty {
+                                    return persons
+                                } else {
+                                    return persons.filter { $0.firstname.lowercased().contains(searchText.lowercased()) }
+                                }
                             }
-                                
-//                                    List {
-//                                        NavigationLink {
-//                                            ProfilView(profile: person)
-//                                                .presentationDetents([.large])
-//                                        } label: {
-//                                            HStack {
-//                                                Image(systemName: "person.circle")
-//                                                Text(person.firstname)
-//                                                    .cornerRadius(20)
-//                                            }
-//                                            .padding(0)
-//                                            .frame(height: 10)
-//                                        }
-//                                    }
-                                
-//                                }
+                        
                         default:
                             EmptyView()
                         }
