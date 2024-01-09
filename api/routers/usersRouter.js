@@ -6,6 +6,6 @@ router.get("/", usersServices.getAllUsers);
 
 router.post("/", usersServices.addUser);
 
-router.put("/", usersServices.updateUser);
+router.put("/:id_person", usersServices.updateUser);
 
 module.exports = router;

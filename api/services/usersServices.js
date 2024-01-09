@@ -2,10 +2,11 @@ const pool = require("../database/db");
 
 const getAllUsers = async (req, res) => {
    try {
-      pool.query("SELECT * FROM Person", (err, results) => {
+      pool.query("SELECT * FROM Person WHERE id_person = 1", (err, results) => {
          if (err) {
             return res.status(400).send({ success: 1, error: err });
          }
+         console.log(results);
          return res.status(200).send(results.rows);
       });
    } catch (e) {
@@ -32,7 +33,7 @@ const addUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-   let id_person = req.query.id_person;
+   let id_person = req.params.id_person;
    let { firstname, lastname, email, company, activity } = req.body;
    try {
       pool.query(

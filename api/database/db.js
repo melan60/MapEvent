@@ -19,3 +19,5 @@ const pool = new Pool({
 
 // Exports
 module.exports = pool;
+
+//psql -h localhost -U ios ios_s5
