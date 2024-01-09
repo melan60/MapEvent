@@ -107,6 +107,30 @@ struct ApiService {
         }
     }
     
-    // update all
-    // update place user
+    func updatePerson(for person: Person) async throws -> [Person] {
+        let endpoint = baseUrl + "/users/\(person.id_person)"
+        
+        guard let url = URL(string: endpoint) else {
+            throw ApiError.invalidUrl
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-type")
+        
+        let updateData = ["firstname":person.firstname, "lastname":person.lastname, "email":person.email, "company":person.company, "activity":person.activity]
+        let jsonData = try JSONSerialization.data(withJSONObject: updateData)
+        request.httpBody=jsonData
+        
+        let (data, response) = try await URLSession.shared.upload(for: request, from: jsonData)
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            print(response)
+            print(data)
+            throw ApiError.invalidStatusCode
+        }
+        
+        let decodedData = try JSONDecoder().decode([Person].self, from: data)
+        
+        return decodedData
+    }
 }

@@ -82,14 +82,16 @@ struct BottomSheetView: View {
                                 if searchText.isEmpty {
                                     return persons
                                 } else {
-                                    return persons.filter { $0.firstname.lowercased().contains(searchText.lowercased()) }
+                                    return persons.filter { $0.firstname.lowercased().contains(searchText.lowercased()) ||
+                                        $0.lastname.lowercased().contains(searchText.lowercased())
+                                    }
                                 }
                             }
                         default:
                             EmptyView()
                     }
                 }
-                .searchable(text: $searchText, prompt: "Un lieu, une personne...")
+                .searchable(text: $searchText, prompt: "Une personne...")
             }
         }
         .presentationDetents(Set(heights))
@@ -97,8 +99,6 @@ struct BottomSheetView: View {
         .presentationBackgroundInteraction(.enabled)
         .interactiveDismissDisabled()
         .task {
-            print("\n\n\t")
-            print(id_place)
             await viewModelPersonByPlace.getAllPersonsByPlace(id_place: id_place)
         }
 

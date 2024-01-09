@@ -29,4 +29,16 @@ class ViewModel: ObservableObject {
         print(persons)
         return persons[0]
     }
+    
+    func updatePersons(for person: Person) async {
+        self.state = .loading
+        do {
+            let persons = try await service.updatePerson(for: person)
+            self.state = .success(data: persons)
+            print(persons)
+        } catch {
+            self.state = .failed(error: error)
+            print(error)
+        }
+    }
 }

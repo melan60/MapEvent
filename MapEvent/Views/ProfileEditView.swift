@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct ProfileEditView: View {
+    @StateObject var viewModel = ViewModel(service:ApiService())
+    
     var profile : Person
+    
     @State private var email: String = ""
     @State private var company: String = ""
     @State private var activity: String = ""
@@ -116,9 +119,15 @@ struct ProfileEditView: View {
                     .padding(.leading)
                     
                     Button("Appliquer les modification"){
+                        var updateData = profile
+                        updateData.email = email
+                        updateData.company = company
+                        updateData.activity = activity
+                        Task {
+                            await viewModel.updatePersons(for: updateData)
+                        }
                         
                     }
-                    
                 }
         }
     }

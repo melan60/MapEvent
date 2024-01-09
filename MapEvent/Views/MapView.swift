@@ -68,11 +68,12 @@ struct MapView: View {
                         } label: {
                             Image(systemName: "person.circle")
                                 .resizable()
-                                .position(x: 180, y: -300)
                                 .frame(width:60, height: 60)
                                 .foregroundColor(.blue)
                         }
                         .padding(.trailing,10)
+                        .padding(.bottom, 700)
+                        .padding(.leading, 250)
 
                         default:
                             EmptyView()
