@@ -20,6 +20,8 @@ struct MapView: View {
     
     @State private var showingCredits = false
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 50.7235038, longitude: 3.1605714), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+    @State private var placeClicked = "Le Saint Martin"
+    @State private var test = true
     
     var body: some View {
         NavigationStack{
@@ -35,7 +37,18 @@ struct MapView: View {
                             coordinate: location.coordinate,
                             content: {
                                 Button {
-                                    showingCredits.toggle()
+//                                    if(placeClicked == location.name){
+//                                        print("dans le if")
+//                                        print(placeClicked)
+//                                        print(location.name)
+//                                        test = false
+//                                        //showingCredits.toggle()
+//                                    }
+                                    placeClicked = location.name
+                                    if(showingCredits == false || test==false){
+                                        showingCredits.toggle()
+                                    }
+                                    
                                 } label: {
                                     HStack() {
                                         // Image(systemName: "pin.fill").foregroundColor(.red)
@@ -44,7 +57,8 @@ struct MapView: View {
                                     }.foregroundColor(.blue)
                                 }
                                 .sheet(isPresented: $showingCredits){
-                                    BottomSheetView()
+                                    BottomSheetView(lieu : placeClicked)
+//                                    BottomSheetView()//
                                 }
                             }
                         )
@@ -66,7 +80,6 @@ struct MapView: View {
                                     let person = persons[0]
                                     ProfileEditView(profile :person)
                                 default:
-                                    Text("df")
                                     EmptyView()
                             }
                                 

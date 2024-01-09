@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BottomSheetView: View {
+    var lieu : String
     @StateObject var viewModel = ViewModel(service:ApiService())
     
     @State private var searchText = ""
@@ -23,7 +24,12 @@ struct BottomSheetView: View {
 
     var body: some View {
         VStack {
+//            Text(lieu)
+//                .padding(.trailing, 120)
+//                .padding(.top,10)
+//                .bold()
             HStack {
+                
                 NavigationStack{
                     switch(viewModel.state) {
                         case .loading:
@@ -57,10 +63,20 @@ struct BottomSheetView: View {
                         default:
                             EmptyView()
                         }
+                    
+                            
                             List {
                                 
                             }
                             .toolbar {
+                                Text(lieu)
+                                    .padding(.trailing, 120)
+                                    .padding(.top,10)
+//                                    .multilineTextAlignment(.center)
+                                    .bold()
+//                                    .frame(maxWidth: .infinity, alignment: .center)
+                                
+                                //Spacer()
                                 Button("Lieu") {
                                     print("Lieu tapped!")
                                 }
@@ -115,6 +131,7 @@ struct BottomSheetView: View {
 
 struct BottomSheetView_Previews: PreviewProvider {
     static var previews: some View {
-        BottomSheetView()
+//        BottomSheetView()
+        BottomSheetView(lieu: "Nom lieu")
     }
 }
