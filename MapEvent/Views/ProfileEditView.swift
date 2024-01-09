@@ -16,6 +16,9 @@ struct ProfileEditView: View {
     @State private var company: String = ""
     @State private var activity: String = ""
     
+    @State private var present = false
+    @State private var alertTitle = "Loading"
+    
     var body: some View {
         VStack(alignment: .center){
             Image(systemName: "person.circle")
@@ -123,16 +126,28 @@ struct ProfileEditView: View {
                         updateData.email = email
                         updateData.company = company
                         updateData.activity = activity
+                        present = true
+                        
                         Task {
                             await viewModel.updatePersons(for: updateData)
+                            switch (viewModel.state) {
+                            case .success(_):
+                                present = false
+                            case .failed(_):
+                                present = false
+                            default:
+                                break
+                            }
                         }
-                        
                     }
                     .padding(.bottom,10)
                     .padding(.top,10)
                     .padding(.trailing,5)
                     .padding(.leading,5)
                     .buttonStyle(.borderedProminent)
+                    .alert("loading",isPresented: $present) {
+                    }
+                    
                 }
         }
     }
@@ -140,6 +155,6 @@ struct ProfileEditView: View {
 
 struct ProfileEditView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileEditView(profile: Person(id_person: 1, firstname: "firstnamet", lastname: "namet", email: "emailt", company: "companyt", activity: "activityt", is_placed: false))
+        ProfileEditView(profile: Person(id_person: 1, firstname: "Bruno", lastname: "Charles", email: "bru@gmail.com", company: "Apple", activity: "Développeur", is_placed: true))
     }
 }

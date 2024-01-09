@@ -102,8 +102,7 @@ struct BottomSheetView: View {
         }
         .presentationDetents(Set(heights))
         .presentationCornerRadius(30)
-        .presentationBackgroundInteraction(.enabled)
-        .interactiveDismissDisabled()
+        .presentationBackgroundInteraction(.disabled)
         .task {
             await viewModelPersonByPlace.getAllPersonsByPlace(id_place: id_place)
         }

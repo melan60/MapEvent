@@ -125,7 +125,6 @@ struct ApiService {
         let (data, response) = try await URLSession.shared.upload(for: request, from: jsonData)
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
             print(response)
-            print(data)
             throw ApiError.invalidStatusCode
         }
         
