@@ -24,15 +24,9 @@ class ViewModel: ObservableObject {
         self.service = service
     }
     
-    func getAllPersons() async {
-        self.state = .loading
-        do {
-            let persons = try await service.fetchAllPersons()
-            self.state = .success(data: persons)
-            print(persons)
-        } catch {
-            self.state = .failed(error: error)
-            print(error)
-        }
+    func getAllPersons() async throws -> Person {
+        let persons = try await service.fetchAllPersons()
+        print(persons)
+        return persons[0]
     }
 }

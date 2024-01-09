@@ -32,10 +32,12 @@ class ViewModelPlaces: ObservableObject {
             var locations : [Location] = []
             let places = try await service.fetchAllPlaces()
             for i in 0...places.count-1 {
-                locations.append(Location(name: places[i].place_name, coordinate: CLLocationCoordinate2D(latitude: Double(places[i].latitude), longitude: Double(places[i].longitude))))
+                locations.append(Location(id_place: places[i].id_place, name: places[i].place_name, coordinate: CLLocationCoordinate2D(latitude: Double(places[i].latitude), longitude: Double(places[i].longitude))))
             }
-            self.state = .success(data: locations)
+            print("\n\n\n")
+            print(locations)
             print(places)
+            self.state = .success(data: locations)
         } catch {
             self.state = .failed(error: error)
             print(error)

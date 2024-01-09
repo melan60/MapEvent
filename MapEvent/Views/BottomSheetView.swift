@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct BottomSheetView: View {
+
     var lieu : String
-    @StateObject var viewModel = ViewModel(service:ApiService())
+    var id_place : Int
+    var currentUser: Person
+
+    @StateObject var viewModelPersonByPlace = ViewModelPersonInPlace(service:ApiService()) //récupère la liste des personnes présentes sur le lieu sélectionné
     
     @State private var searchText = ""
     
@@ -30,10 +34,11 @@ struct BottomSheetView: View {
 //                .bold()
             HStack {
                 
-                NavigationStack{
-                    switch(viewModel.state) {
+                NavigationStack {
+                    switch(viewModelPersonByPlace.state) {
                         case .loading:
                             ProgressView()
+
                         case .success(let persons):
                             LazyVGrid(columns: columns, spacing: 20) {
                                 ForEach(searchResults, id: \.self) { person in
@@ -52,6 +57,27 @@ struct BottomSheetView: View {
                                     }
                                 }
                             }.padding(.top,10)
+                        
+                        
+                            List {
+                                
+                            }
+                            .toolbar {
+                                Text(lieu)
+                                    .padding(.trailing, 100)
+                                    .bold()
+                                if (persons.contains(currentUser)) {
+                                    Button("Partir du lieu") {
+                                        deleteLocation(currentUser: currentUser)
+                                    }
+                                } else {
+                                    Button("Se placer ici") {
+                                        addLocation(currentUser: currentUser)
+                                    }
+                                }
+                            }
+                            .padding(.trailing, 5)
+
                             var searchResults: [Person] {
                                 if searchText.isEmpty {
                                     return persons
@@ -59,41 +85,24 @@ struct BottomSheetView: View {
                                     return persons.filter { $0.firstname.lowercased().contains(searchText.lowercased()) }
                                 }
                             }
-                        
                         default:
                             EmptyView()
-                        }
-                    
-                            
-                            List {
-                                
-                            }
-                            .toolbar {
-                                Text(lieu)
-                                    .padding(.trailing, 120)
-                                    .padding(.top,10)
-//                                    .multilineTextAlignment(.center)
-                                    .bold()
-//                                    .frame(maxWidth: .infinity, alignment: .center)
-                                
-                                //Spacer()
-                                Button("Lieu") {
-                                    print("Lieu tapped!")
-                                }
-                            }
                     }
-                    .searchable(text: $searchText, prompt: "Un lieu, une personne...")
                 }
+                .searchable(text: $searchText, prompt: "Un lieu, une personne...")
             }
-            .presentationDetents(Set(heights))
-            .presentationCornerRadius(30)
-            .presentationBackgroundInteraction(.enabled)
-            .interactiveDismissDisabled()
-            .task {
-                await viewModel.getAllPersons()
-            }
-        
-            
+        }
+        .presentationDetents(Set(heights))
+        .presentationCornerRadius(30)
+        .presentationBackgroundInteraction(.enabled)
+        .interactiveDismissDisabled()
+        .task {
+            print("\n\n\t")
+            print(id_place)
+            await viewModelPersonByPlace.getAllPersonsByPlace(id_place: id_place)
+        }
+
+
 //            NavigationStack {
 //                Text("test")
 //                        List {
@@ -127,11 +136,23 @@ struct BottomSheetView: View {
 //           }
     }
     
+    func addLocation(currentUser: Person) {
+        Task {
+            await viewModelPersonByPlace.addPlace(id_place: id_place, id_person: currentUser.id_person)
+            await viewModelPersonByPlace.getAllPersonsByPlace(id_place: id_place)
+        }
+    }
+    
+    func deleteLocation(currentUser: Person) {
+        Task {
+            await viewModelPersonByPlace.deletePlace(id_person: currentUser.id_person)
+            await viewModelPersonByPlace.getAllPersonsByPlace(id_place: id_place)
+        }
+    }
 }
 
 struct BottomSheetView_Previews: PreviewProvider {
     static var previews: some View {
-//        BottomSheetView()
-        BottomSheetView(lieu: "Nom lieu")
+        BottomSheetView(lieu: "Nom lieu", id_place: 4, currentUser: Person(id_person: 1, firstname: "Bruno", lastname: "Charles", email: "bru@gmail.com", company: "Apple", activity: "Développeur", is_placed: true))
     }
 }

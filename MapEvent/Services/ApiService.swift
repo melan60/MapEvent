@@ -45,7 +45,7 @@ struct ApiService {
         let (data, response) = try await URLSession.shared.data(from:url)
 
         let decodedData = try JSONDecoder().decode([Person].self, from: data)
-        print(decodedData)
+//        print(decodedData)
         
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
             throw ApiError.invalidStatusCode
@@ -54,8 +54,8 @@ struct ApiService {
         return decodedData
     }
     
-    func fetchPersonsByPlace(for place: String) async throws -> [Person] {
-        let endpoint = baseUrl + "/users?place=\(place)"
+    func fetchPersonsByPlace(for id_place: Int) async throws -> [Person] {
+        let endpoint = baseUrl + "/places/isin/\(id_place)"
         
         guard let url = URL(string: endpoint) else {
             throw ApiError.invalidUrl
@@ -70,7 +70,43 @@ struct ApiService {
         
         return decodedData
     }
+    
+    func addPlace(id_place: Int, id_person: Int) async throws {
+        let endpoint = baseUrl + "/places/\(id_place)/\(id_person)"
+
+        guard let url = URL(string: endpoint) else {
+            throw ApiError.invalidUrl
+        }
         
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let (_, response) = try await URLSession.shared.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+            throw ApiError.invalidStatusCode
+        }
+    }
+    
+    func deletePlace(id_person: Int) async throws {
+        let endpoint = baseUrl + "/places/\(id_person)"
+
+        guard let url = URL(string: endpoint) else {
+            throw ApiError.invalidUrl
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let (_, response) = try await URLSession.shared.data(for: request)
+
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+            throw ApiError.invalidStatusCode
+        }
+    }
+    
     // update all
     // update place user
 }
