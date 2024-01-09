@@ -63,18 +63,24 @@ struct BottomSheetView: View {
                                 
                             }
                             .toolbar {
-                                Text(lieu)
-                                    .padding(.trailing, 100)
-                                    .bold()
-                                if (persons.contains(currentUser)) {
-                                    Button("Partir du lieu") {
-                                        deleteLocation(currentUser: currentUser)
-                                    }
-                                } else {
-                                    Button("Se placer ici") {
-                                        addLocation(currentUser: currentUser)
-                                    }
+                                
+                                ToolbarItem(placement: .navigationBarLeading){
+                                    Text(lieu)
+                                        .bold()
+                                        .padding(.leading,1)
                                 }
+                                ToolbarItem(placement: .navigationBarTrailing){
+                                    if (persons.contains(currentUser)) {
+                                        Button("Partir du lieu") {
+                                            deleteLocation(currentUser: currentUser)
+                                        }
+                                    } else {
+                                        Button("Se placer ici") {
+                                            addLocation(currentUser: currentUser)
+                                        }
+                                    }
+                                }                                
+                                
                             }
                             .padding(.trailing, 5)
 

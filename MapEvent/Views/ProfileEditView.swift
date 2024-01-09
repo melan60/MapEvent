@@ -115,7 +115,7 @@ struct ProfileEditView: View {
                         .padding(.leading)
                         
                     }
-                    .padding(.bottom,150)
+                    .padding(.bottom,70)
                     .padding(.leading)
                     
                     Button("Appliquer les modification"){
@@ -128,6 +128,11 @@ struct ProfileEditView: View {
                         }
                         
                     }
+                    .padding(.bottom,10)
+                    .padding(.top,10)
+                    .padding(.trailing,5)
+                    .padding(.leading,5)
+                    .buttonStyle(.borderedProminent)
                 }
         }
     }
