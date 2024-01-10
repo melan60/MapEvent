@@ -43,16 +43,21 @@ struct ProfilView: View {
                         .frame(width:60, height: 60)
                         .foregroundColor(.blue)
                     
-                    VStack{
-                        Text("Email ")
-                            .font(.system(size: 18))
-                            .foregroundStyle(.gray)
-                            .bold()
-                            
-                        Text(profile.email)
-                            .font(.system(size: 25))
+                    VStack(alignment: .leading){
+                        HStack{
+                            Text("Email ")
+                                .font(.system(size: 18))
+                                .foregroundStyle(.gray)
+                                .bold()
+                        }
+                        
+                        HStack{
+                            Text(profile.email)
+                                .font(.system(size: 25))
+                        }
+                        
                     }
-                    .padding(.leading)
+                    .padding(.leading,10)
                     
                     
                 }
@@ -68,15 +73,25 @@ struct ProfilView: View {
                         .frame(width:60, height: 60)
                         .foregroundColor(.blue)
                     
-                    VStack{
-                        Text("Entreprise  ")
-                            .font(.system(size: 18))
-                            .bold()
-                            .foregroundStyle(.gray)
-                        Text(profile.company)
-                            .font(.system(size: 25))
+                    VStack(alignment: .leading){
+                        HStack{
+                            Text("Entreprise  ")
+                                .font(.system(size: 18))
+                                .bold()
+                                .foregroundStyle(.gray)
+                        }
+                        HStack{
+                            Text(profile.company)
+                                .font(.system(size: 25))
+                        }
+//                        Text("Entreprise  ")
+//                            .font(.system(size: 18))
+//                            .bold()
+//                            .foregroundStyle(.gray)
+//                        Text(profile.company)
+//                            .font(.system(size: 25))
                     }
-                    .padding(.leading)
+                    .padding(.leading,10)
                     
                 }
                 .padding(.bottom,20)
@@ -89,15 +104,20 @@ struct ProfilView: View {
                         .frame(width:50, height: 50)
                         .foregroundColor(.blue)
                     
-                    VStack{
-                        Text("Domaine")
-                            .font(.system(size: 18))
-                            .bold()
-                            .foregroundStyle(.gray)
-                        Text(profile.activity)
-                            .font(.system(size: 25))
+                    VStack(alignment: .leading){
+                        HStack{
+                            Text("Domaine")
+                                .font(.system(size: 18))
+                                .bold()
+                                .foregroundStyle(.gray)
+                        }
+                        HStack{
+                            Text(profile.activity)
+                                .font(.system(size: 25))
+                        }
+                        
                     }
-                    .padding(.leading)
+                    .padding(.leading,10)
                     
                 }
                 .padding(.bottom,150)
